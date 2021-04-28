@@ -5,7 +5,7 @@ set -o errexit
 
 cd $(dirname "$(realpath "$0")")/../
 
-SLACK_VERSION="4.0.2"
+SLACK_VERSION="4.4.2"
 
 trap 'ERRCODE=$? \
   && cd - \
@@ -15,8 +15,4 @@ trap 'ERRCODE=$? \
 
 # Slack desktop
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-${SLACK_VERSION}-amd64.deb
-sudo apt install -y ./slack-desktop-*.deb
-
-# Slack black theme
-cd slack-black-theme
-bash -i ./darkSlack.sh
+sudo apt install -y ./slack-desktop-*.deb && sudo apt update && sudo apt upgrade -y
